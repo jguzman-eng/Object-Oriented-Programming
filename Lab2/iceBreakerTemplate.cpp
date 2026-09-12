@@ -3,6 +3,7 @@
 #include<vector>
 #include<cstdlib>
 #include<ctime>
+#include<random>
 /**
  * TO DO: 
  * Add <vector>, <cstdlib>, and <ctime>​
@@ -29,7 +30,6 @@ void writeFile(string filename, vector<string> v0, vector<string> v1);
 
 int main()
 {
-    srand(time(nullptr));
     vector<string> roster;
     vector<string> qBank;
     readFile("2310_F26_Rosters.csv", roster);
@@ -58,8 +58,16 @@ int main()
  * @return int: index of question
  */
 int ranGen(int questionsSize){
-    int randomNumber = rand() % questionsSize;  // 0 through questions.size()-1
-    return randomNumber;
+    // Learning: Source is AI
+    //Step 1: Get an initial seed, old one uses the clock for a seed
+    //this one uses my opearting system and hardware to generate a seed
+    static random_device rd;
+    //intialize the random number generator with the seed
+    static mt19937 gen(rd());
+    //defines the range of the random number generator
+    uniform_int_distribution<int> distrib(0, questionsSize -1);
+    return distrib(gen);
+
 }
 
 /**
