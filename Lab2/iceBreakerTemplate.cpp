@@ -4,43 +4,34 @@
 #include<cstdlib>
 #include<ctime>
 #include<random>
-/**
- * TO DO: 
- * Add <vector>, <cstdlib>, and <ctime>​
- */
 
 using namespace std;
-
-/**
- * TO DO: 
- * Create function prototypes for all the functions.
- * Write their function declarations below mai()).
- * 
- * See promptFile(...) and printVec(...), which serve as examples.
- * 
- */
-
 
 //------------------------PROTOTYPE-------------------------------------------
 void promptFile(vector<string> &); 
 void printVec(vector<string>);
 int ranGen(int);
 bool readFile(string filename, vector<string> & vec);
-void writeFile(string filename, vector<string> v0, vector<string> v1);
+bool writeFile(string filename, const vector<string> & v0, const vector<string> & v1);
 
 int main()
 {
+    cout << "Size of roster: ";
     vector<string> roster;
     vector<string> qBank;
     readFile("2310_F26_Rosters.csv", roster);
+
+
+    
     readFile("Questions.csv", qBank);
     // printVec(roster);
     // printVec(qBank);
 
-    // cout << "Size of roster: " << roster.size() << endl; 
+    cout << "Size of roster: " << roster.size() << endl; 
     // cout << "Size of qBank: " << qBank.size() << endl;
 
     writeFile("Student_question_bank.csv", roster, qBank);
+
 
 }
 
@@ -83,13 +74,12 @@ int ranGen(int questionsSize){
 bool readFile(string filename, vector<string> & vec) {
 
    ifstream inputFile(filename);
-   bool resultReadFile = true;
+   bool readFile = true;
 
     //error handling
     if (!inputFile.is_open()) {
         cerr << "Error: Could not open file\n";
-        resultReadFile = false;
-        return;
+        return false;
     }
 
     string line;
@@ -99,7 +89,7 @@ bool readFile(string filename, vector<string> & vec) {
     }
 
     inputFile.close();
-    return resultReadFile;
+   return readFile;
 }
 /**
  * @brief writes to filename with the first column from v0, second column from v1
@@ -121,11 +111,12 @@ bool readFile(string filename, vector<string> & vec) {
  * -  pass by value (e.g. vector<string> v0),
  * -  pass by const reference (e.g. const vector<string> & v0),
  */
-void writeFile(string filename, vector<string> v0, vector<string> v1){
+bool writeFile(string filename, const vector<string> & v0, const vector<string> & v1){
 
     ofstream outputFile(filename);
      if (!outputFile) {
         cout << "Error: Could not create data.csv" << endl;
+        return false;
     }
 
     // write under the structure:
@@ -134,6 +125,9 @@ void writeFile(string filename, vector<string> v0, vector<string> v1){
         outputFile << v0[i] << "," << v1[ranGen(v1.size())] << endl;
     }
     outputFile.close();
+    return true;
+
+
 
 }
 
