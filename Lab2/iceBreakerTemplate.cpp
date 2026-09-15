@@ -12,17 +12,13 @@ void promptFile(vector<string> &);
 void printVec(vector<string>);
 int ranGen(int);
 bool readFile(string filename, vector<string> & vec);
-bool writeFile(string filename, const vector<string> & v0, const vector<string> & v1);
+bool writeFile(string filename,const vector<string> & v0, const vector<string> & v1);
 
 int main()
 {
-    cout << "Size of roster: ";
     vector<string> roster;
     vector<string> qBank;
-    readFile("2310_F26_Rosters.csv", roster);
-
-
-    
+    readFile("2310_F26_Rosters.csv", roster);    
     readFile("Questions.csv", qBank);
     // printVec(roster);
     // printVec(qBank);
@@ -35,19 +31,12 @@ int main()
 
 }
 
-/**
- * @brief randomly returns a number from 0 to 5.
- * - It is hardcoded to be from 0 to 5.
- * - Uses srand(nullptr) in main()
- * TO DO:
- * Modify it so that randGen() reads in 
- * the size of the questions instead of 6 (e.g. questions.size())
- * 
- * TO DO:
- * Use <random> for modern C++ random generation instead 
- * 
- * @return int: index of question
- */
+ /**
+  * @brief generates a random index for the questions vector
+  * 
+  * @param questionsSize 
+  * @return int 
+  */
 int ranGen(int questionsSize){
     // Learning: Source is AI
     //Step 1: Get an initial seed, old one uses the clock for a seed
@@ -66,15 +55,10 @@ int ranGen(int questionsSize){
  * 
  * @param filename :string 
  * @param vec: vector<string> &
- * 
- * TO DO: 
- * ​​​Return a bool instead in order to indicate whether the operation
- * succeeded or not
  */
 bool readFile(string filename, vector<string> & vec) {
 
    ifstream inputFile(filename);
-   bool readFile = true;
 
     //error handling
     if (!inputFile.is_open()) {
@@ -89,7 +73,7 @@ bool readFile(string filename, vector<string> & vec) {
     }
 
     inputFile.close();
-   return readFile;
+   return true;
 }
 /**
  * @brief writes to filename with the first column from v0, second column from v1
@@ -98,19 +82,7 @@ bool readFile(string filename, vector<string> & vec) {
  * @param v0: vector<string> (for students names)
  * @param v1: vector<string> (for questions)
  * 
- * TO DO: 
- * ​​​Return a bool instead in order to indicate whether the operation
- * succeeded or not
- * 
- * TO DO:
- * ​​Use pass by const reference (const vector<string> & v0, const vector<string> & v1)
- * as opposed to pass by value (vector<string> v0, vector<string> v1). 
- * 
- * What is the differennce between:
- * -  pass by reference (e.g. vector<string> & v0),
- * -  pass by value (e.g. vector<string> v0),
- * -  pass by const reference (e.g. const vector<string> & v0),
- */
+*/
 bool writeFile(string filename, const vector<string> & v0, const vector<string> & v1){
 
     ofstream outputFile(filename);
