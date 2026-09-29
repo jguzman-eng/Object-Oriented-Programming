@@ -1,4 +1,4 @@
-//RPG.h
+//RPG.H
 #ifndef RPG_H
 #define RPG_H
 using namespace std;
@@ -17,6 +17,10 @@ class RPG {
 
     //accessor
     string getName() const;
+    int getHitsTaken() const;
+    float getLuck() const;
+    float getExp() const;
+    int getLevel() const;
     //COMPLETE THE REST
 
     private:
