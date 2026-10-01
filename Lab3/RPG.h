@@ -21,10 +21,12 @@ class RPG {
     float getLuck() const;
     float getExp() const;
     int getLevel() const;
-    //COMPLETE THE REST
 
     private:
         string name;
-        //COMPLETE THE REST
+        int hits_taken;
+        float luck;
+        float exp;
+        int level;
 };
 #endif
