@@ -4,13 +4,13 @@
 #include "Game.h"
 using namespace std;
 
-int main() 
-{
+int main(){
     Game game;
     int num_players = 10;
-    game.generatePLayers(num_players);
+
+    game.generatePlayers(num_players);
     game.gameLoop();
-    game.printFinalResult();
+    game.printFinalResults();
 
     return 0;
 }
