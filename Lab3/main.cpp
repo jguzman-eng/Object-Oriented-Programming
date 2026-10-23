@@ -1,15 +1,16 @@
 //main.cpp
 #include <iostream>
 #include "RPG.h"
+#include "Game.h"
 using namespace std;
 
 int main() 
 {
-    Game::Game();
+    Game game;
     int num_players = 10;
-    generatePLayers(num_players);
-    gameLoop();
-    printFinalResult();
+    game.generatePLayers(num_players);
+    game.gameLoop();
+    game.printFinalResult();
 
     return 0;
 }
