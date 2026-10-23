@@ -2,19 +2,25 @@
 #ifndef GAME_H
 #define  GAME_H
 
-Game();
+#include <vector>
+#include <set>
+#include "RPG.h"
+using namespace std;
+
+class Game{
 
 public:
-void generatePlayers(int n);
-void endRound(RPG* winner, RPG* loser, int loserIndex);
-void battleROund();
-void gameLoop();
-void printFInalResults;
+    Game();
+    ~Game();
+    void generatePlayers(int n);
+    void endRound(RPG* winner, RPG* loser, int loserIndex);
+    void battleROund();
+    void gameLoop();
+    void printFinalResults();
 
 private:
-vector<RPG> players;
-int live_players
+    vector<RPG*> players;
+    set <int> live_players;
+};
 
-~Game()
- 
 #endif
