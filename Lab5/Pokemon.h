@@ -7,13 +7,14 @@
 using namespace std;
 
 class Pokemon{
-
     public:
+        // Constructors
         Pokemon();
         Pokemon(string name, int hp, int attack, int defense, vector<string> type);
-
-        void speak();
-        void printStats();
+        //Mutator Funtions
+        virtual void speak();
+        // Accessor Functions
+        virtual void printStats();
 
     protected:
         string name;
@@ -22,5 +23,4 @@ class Pokemon{
         int defense;
         vector<string> type;
 };
-
 #endif
